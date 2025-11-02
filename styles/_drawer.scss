@@ -1,0 +1,63 @@
+@use 'variables';
+
+.drawer-block {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: variables.$white;
+    z-index: 0;
+    
+    &.active {
+        animation: opacity 0.3s ease-in-out forwards;
+        opacity: 1;
+        z-index: 1000;
+    }
+
+    &.active .drawer-content {
+        position: relative;
+        transform: translateX(0);
+
+        .drawer-close-btn {
+            display: block;
+        }
+
+        .drawer-menu {
+            display: flex;
+            flex-flow: column nowrap;
+            padding: 1rem;
+            gap: 5rem;
+            align-items: center;
+            margin-top: 4rem;
+            justify-content: center;
+        }
+    }
+
+    .drawer-close-btn {
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+            transform: rotate(90deg);
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(90deg);
+        }
+    }
+
+
+    @keyframes opacity {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
