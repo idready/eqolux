@@ -1,0 +1,29 @@
+
+.hero-block {
+
+    header {
+
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
+
+        .header-logo {
+            width: auto;
+            max-height: 6.2rem;
+            max-width: 100%;
+        }
+    }
+
+    .hero {
+        position: relative;
+        overflow: hidden;
+
+        &, > * {
+            z-index: 2;
+        }
+    }
+
+}

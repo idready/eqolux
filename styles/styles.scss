@@ -1,0 +1,96 @@
+@use "reset";
+@use "sass:color";
+@use "variables";
+
+@use "header";
+@use "hero";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    font-size: 10px;
+}
+
+body {
+    font-family: variables.$font-family-base;
+    background-color: variables.$bg-color;
+    color: variables.$color-text;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(3rem, 1fr) auto;
+}
+
+.container-width {
+    max-width: 150rem;
+    margin: 0 auto;
+}
+
+// .container {
+//     display: grid;
+//     grid-template-areas: 
+//         "hero hero"
+//         "main main"
+//         "footer footer";
+//     grid-gap: 1.5rem;
+//     grid-template-columns: repeat(2, 1fr);
+//     grid-template-rows: auto 1fr auto;
+//     margin: 0 auto;
+// }
+
+// .container > footer {
+//     grid-area: footer;
+//     text-align: center;
+//     padding: 1rem 0;
+//     font-size: 1rem;
+//     color: color.adjust(variables.$color-text, $lightness: -20%);
+// }
+
+// .container > .hero {
+//     grid-area: hero;
+//     background-color: color.adjust(variables.$color-background, $lightness: 10%);
+//     // padding: 2rem;
+//     border-radius: 0.5rem;
+//     text-align: center;
+//     min-height: 100vh;
+
+//     nav {
+
+//         ul {
+//             list-style: none;
+//             display: flex;
+//             justify-content: center;
+//             gap: 2rem;
+//             padding-bottom: 1rem;
+
+//             li {
+//                 a {
+//                     text-decoration: none;
+//                     color: variables.$color-text;
+//                     font-weight: bold;
+
+//                     &:hover {
+//                         color: color.adjust(variables.$color-text, $lightness: -30%);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// .container > .main-content {
+//     grid-area: main;
+// }

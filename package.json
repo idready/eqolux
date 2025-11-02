@@ -1,0 +1,24 @@
+{
+  "name": "eqolux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run sass\" \"npm start\"",
+    "start": "npx live-server . -p 8083",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch styles/styles.scss:dist/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "live-server": "^1.2.2",
+    "sass": "^1.93.3",
+    "tailwindcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
