@@ -1,0 +1,61 @@
+@use 'variables';
+
+.animation-button {
+    background: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5);
+    // background: linear-gradient(-45deg, variables.$primary-color, variables.$secondary-color, variables.$light-purple, variables.$old-blue);
+    background-size: 600%;
+    animation: anime 6s linear infinite;
+
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+ @keyframes anime {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.animation-link {
+    position: relative;
+    display: inline-block;
+    font-weight: 800;
+    text-decoration: underline;
+    overflow: hidden;
+    line-height: 2;
+
+    span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        transform: translateX(-100%);
+        transition: transform 275ms ease;
+        &::before {
+        display: inline-block;
+        content: attr(data-content);
+        //color to be filled
+        color: #338AFF;
+        transform: translateX(100%);
+        transition: transform 275ms ease;
+        text-decoration: underline;
+        }
+    }
+
+    &:hover {
+        span {
+        transform: translateX(0);
+        &::before {
+            transform: translateX(0);
+        }
+        }
+    }
+}
