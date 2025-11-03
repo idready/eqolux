@@ -1,0 +1,23 @@
+@use "variables";
+
+/* Modern browsers with `scrollbar-*` support */
+@supports (scrollbar-width: auto) {
+    .scroller {
+        scrollbar-color: variables.$scrollbar-color-thumb variables.$scrollbar-color-track;
+        scrollbar-width: variables.$scrollbar-width;
+    }
+}
+
+/* Legacy browsers with `::-webkit-scrollbar-*` support */
+@supports selector(::-webkit-scrollbar) {
+    .scroller::-webkit-scrollbar-thumb {
+        background: variables.$scrollbar-color-thumb;
+    }
+    .scroller::-webkit-scrollbar-track {
+        background: variables.$scrollbar-color-track;
+    }
+    .scroller::-webkit-scrollbar {
+        max-width: variables.$scrollbar-width-legacy;
+        max-height: variables.$scrollbar-width-legacy;
+    }
+}

@@ -1,0 +1,33 @@
+@use 'variables';
+
+.scroll-down-container {
+    position: relative;
+    width: 100%;
+}
+
+.scroll-down {
+    position: relative;
+    top: 5rem;
+}
+
+.scroll-down::before {
+    animation: bounce 2s ease infinite;
+    color: variables.$primary-color;
+    content: '╲╱';
+    font-size: 2rem;
+    height: 6rem;
+    left: 50%;
+    letter-spacing: -1px;
+    line-height: 4rem;
+    margin-left: -3rem;
+    opacity: 0.8;
+    position: absolute;
+    text-align: center;
+    width: 6rem;
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-50%);
+    }
+}
