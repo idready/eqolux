@@ -1,6 +1,10 @@
+@use 'variables';
 
 .hero-block {
 
+    position: relative;
+    z-index: 3;
+    
     header {
 
         display: flex;
@@ -8,13 +12,27 @@
         align-items: center;
         justify-content: space-between;
         position: relative;
-        z-index: 2;
+        // position: sticky;
+        // top: 0;
+        z-index: 4;
 
         .header-logo {
             width: auto;
             max-height: 6.2rem;
             max-width: 100%;
         }
+
+        // &::after {
+        //     content: "";
+        //     position: absolute;
+        //     bottom: 0;
+        //     left: 0;
+        //     right: 0;
+        //     height: 100%;
+        //     background-color: variables.$white;
+        //     z-index: -1;
+        //     filter: blur(1px);
+        // }
     }
 
     .hero {

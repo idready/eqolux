@@ -5,7 +5,10 @@
 
     min-height: 100vh;
     position: relative;
-    overflow: hidden;
+    // overflow: hidden; // To enable position sticky
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
 
     &:after {
         position: absolute;
@@ -20,7 +23,19 @@
         mask-image: linear-gradient(180deg, transparent 0, variables.$bg-color 90%);
     }
     
-    
+    .hero-main-contain {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 2rem;
+        gap: 1rem;
+        min-height: 100%;
+    }
+
     .motion-animation {
         pointer-events: none; 
         position: absolute; 
@@ -37,6 +52,34 @@
             height: 100%;
             width: 100%;
             object-fit: fill;
+            position: relative;
+            transform: rotate(180deg);
+        }
+    }
+
+    .main-title {
+        font-size: calc((variables.$heading-1-size-value - 1) * 1.2vw + 1rem);
+        line-height: 1;
+    }
+
+    .invoices-count {
+        position: relative;
+        z-index: 2;
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        p {
+            font-size: 2.4rem;
+            margin: 2rem 0;
+            // color: variables.$color-text-secondary;
+
+            .counter {
+                font-weight: 700;
+                // color: variables.$color-primary;
+            }
         }
     }
 }

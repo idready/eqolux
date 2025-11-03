@@ -24,39 +24,136 @@
 <body>
     <main class="main-container">
         <div class="hero-block">
-            <header class="container-width">
-
-                <div class="flex flex-wrap items-center justify-between mx-auto p-10 w-full">
-                    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img class="header-logo" src="/assets/logo.png" alt="eqolux logo"/>
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden">eqolux</span>
-                    </a>
-                    <button id="open-menu" data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-15 h-15 justify-center text-sm text-gray-600 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 hover:cursor-pointer" aria-controls="navbar-default" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-15 h-15" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-                        </svg>
-                    </button>
-                    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-                        <ul class="flex flex-col gap-5 p-4 mx-4 border items-center border-none rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse">
-                            <li>
-                                <a href="#" class="text-2xl text-gray-600 hover:text-blue-600 hover:underline">Login</a>
-                            </li>
-                            <li>
-                                <button type="button" class="text-white rounded-lg text-2xl! px-5 py-2.5 text-center animation-button hover:cursor-pointer">Ask For Demo</button>
-                            </li>
-                        </ul>
+            <header>
+                <div class="header-container container-width w-full mx-auto">
+                    <div class="flex flex-wrap items-center justify-between mx-auto p-10 w-full">
+                        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                            <img class="header-logo" src="/assets/logo.png" alt="eqolux logo"/>
+                            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white hidden">eqolux</span>
+                        </a>
+                        <button id="open-menu" data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-15 h-15 justify-center text-sm text-gray-600 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 hover:cursor-pointer" aria-controls="navbar-default" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="w-15 h-15" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                            </svg>
+                        </button>
+                        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                            <ul class="flex flex-col gap-5 p-4 mx-4 border items-center border-none rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse">
+                                <li>
+                                    <a href="#" class="text-2xl text-gray-600 hover:text-blue-600 hover:underline">Login</a>
+                                </li>
+                                <li>
+                                    <button type="button" class="text-white rounded-lg text-2xl! px-5 py-2.5 text-center animation-button hover:cursor-pointer">Ask For Demo</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-
             </header>
+            <div class="hero-main-contain">
+                <p class="text-4xl text-gray-400">AI for Hotels & Restaurants</p>
+                <p class="main-title text-blue-900 poppins-regular text-black-600">Cut <span class="dynamic-text">cost</span> & CO2 fast.<br>No spreadsheet needed.</p>
+
+                <!-- The textarea goes here -->
+                <section class="prompt-composer mx-auto max-w-400!" aria-label="Prompt composer">
+                    <div class="prompt-composer__surface">
+                        <div class="prompt-composer__suggestion" aria-live="polite">
+                            <div class="prompt-composer__star" aria-hidden="true">
+                                <svg viewBox="0 0 26 26">
+                                    <path d="M19.667 10.806c1.084-.154 1.87-.268 2.357-.341.486-.073.82-.109 1.002-.109.794 0 1.433.26 1.916.78.482.492.724 1.15.724 1.972 0 .822-.242 1.496-.724 2.023-.483.492-1.122.738-1.916.738-.265 0-.676-.036-1.233-.109-.53-.073-1.463-.228-2.799-.464l-3.69-.637 2.602 3.036c1.042 1.213 1.695 2.05 1.96 2.51.266.459.398.898.398 1.318 0 .822-.232 1.479-.695 1.972-.483.52-1.094.78-1.833.78-.794 0-1.405-.279-1.833-.837-.427-.557-.99-1.792-1.688-3.705l-1.676-4.496-1.676 4.496c-.698 1.913-1.26 3.148-1.688 3.705-.428.558-1.039.837-1.833.837-.739 0-1.35-.26-1.832-.78-.464-.493-.695-1.15-.695-1.972 0-.42.133-.859.398-1.318.266-.46.918-1.297 1.96-2.51l2.603-3.036-3.69.637c-1.336.237-2.269.392-2.799.464-.557.073-.968.109-1.233.109-.794 0-1.433-.246-1.916-.738-.482-.527-.723-1.201-.723-2.023 0-.822.241-1.48.723-1.972.483-.52 1.122-.78 1.916-.78.182 0 .516.036 1.002.109.486.073 1.273.187 2.357.341l3.69.637-2.603-3.036c-1.042-1.213-1.695-2.05-1.96-2.51-.266-.46-.398-.899-.398-1.318 0-.822.231-1.48.695-1.973.482-.52 1.093-.779 1.832-.779.794 0 1.405.278 1.833.836.428.558.99 1.793 1.688 3.706l1.676 4.496 1.676-4.496c.698-1.913 1.261-3.148 1.688-3.706.428-.558 1.039-.836 1.833-.836.739 0 1.35.26 1.833.779.463.493.695 1.151.695 1.973 0 .419-.133.858-.398 1.318-.265.46-.918 1.297-1.96 2.51l-2.603 3.036 3.69-.637z"/>
+                                </svg>
+                            </div>
+                            <p class="prompt-composer__sentence">
+                                <span>As a </span>
+                                <label class="prompt-token">
+                                    <span class="sr-only">Select an action verb</span>
+                                    <select class="prompt-token__label" data-token="verb" aria-label="Action verb">
+                                        <option value="monitors">CFO</option>
+                                        <option value="tracks">ESG Manager</option>
+                                        <option value="syncs">Purchasing Director</option>
+                                        <option value="audits">Quality Manager</option>
+                                    </select>
+                                </label>
+                                <span>, I want to identify the</span>
+                                <label class="prompt-token">
+                                    <span class="sr-only">Select a subject</span>
+                                    <select class="prompt-token__label" data-token="subject" aria-label="Subject">
+                                        <option value="website/platform">Biggest price increase</option>
+                                        <option value="CRM pipeline">Most important products</option>
+                                        <option value="Slack workspace">Average price for chicken</option>
+                                        <option value="email inbox">Biggest difference between min. and max. unit price</option>
+                                        <option value="analytics dashboard">Biggest Co2 impact, per product category</option>
+                                        <option value="analytics dashboard">Biggest cost savings</option>
+                                        <option value="analytics dashboard">Highest return rate per supplier</option>
+                                    </select>
+                                </label>
+                                <span> in the last </span>
+                                <label class="prompt-token">
+                                    <span class="sr-only">Select a trigger</span>
+                                    <select class="prompt-token__label" data-token="trigger" aria-label="Trigger">
+                                        <option value="action occurs">6 months</option>
+                                        <option value="action occurs">8 months</option>
+                                        <option value="action occurs">12 months</option>
+                                        <option value="action occurs">24 months</option>
+                                    </select>
+                                </label>
+                                <span>for my hospitality company ?</span>
+                            </p>
+                        </div>
+                        <label class="prompt-composer__editor" for="prompt-composer-textarea">
+                        <span class="sr-only">Prompt</span>
+                        <textarea id="prompt-composer-textarea" class="prompt-composer__textarea" spellcheck="false" hidden></textarea>
+                        </label>
+                        <div class="prompt-composer__footer">
+                            <button type="button" class="prompt-composer__action prompt-composer__action--secondary" data-action="shuffle" aria-label="Shuffle suggestions">
+                                <svg width="800px" height="800px" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path class="clr-i-outline clr-i-outline-path-1" d="M34.1,4,31.71,1.6a1.83,1.83,0,0,0-1.31-.54h0a2.05,2.05,0,0,0-1.45.62L1.76,29.23A2,2,0,0,0,1.68,32l2.4,2.43A1.83,1.83,0,0,0,5.39,35h0a2.05,2.05,0,0,0,1.45-.62L34,6.79A2,2,0,0,0,34.1,4ZM5.42,32.93,3.16,30.65h0L24.11,9.43l2.25,2.28ZM32.61,5.39l-5.12,5.18L25.24,8.29l5.13-5.2,2.25,2.28Z"></path><path class="clr-i-outline clr-i-outline-path-2" d="M32.53,20.47l2.09-2.09a.8.8,0,0,0-1.13-1.13l-2.09,2.09-2.09-2.09a.8.8,0,0,0-1.13,1.13l2.09,2.09-2.09,2.09a.8.8,0,0,0,1.13,1.13l2.09-2.09,2.09,2.09a.8.8,0,0,0,1.13-1.13Z"></path><path class="clr-i-outline clr-i-outline-path-3" d="M14.78,6.51a.8.8,0,0,0,1.13,0L17.4,5l1.49,1.49A.8.8,0,0,0,20,5.38L18.54,3.89,20,2.4a.8.8,0,0,0-1.13-1.13L17.4,2.76,15.91,1.27A.8.8,0,1,0,14.78,2.4l1.49,1.49L14.78,5.38A.8.8,0,0,0,14.78,6.51Z"></path><path class="clr-i-outline clr-i-outline-path-4" d="M8.33,15.26a.8.8,0,0,0,1.13,0l1.16-1.16,1.16,1.16a.8.8,0,1,0,1.13-1.13L11.76,13l1.16-1.16a.8.8,0,1,0-1.13-1.13l-1.16,1.16L9.46,10.68a.8.8,0,1,0-1.13,1.13L9.49,13,8.33,14.13A.8.8,0,0,0,8.33,15.26Z"></path>
+                                    <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+                                </svg>
+                            </button>
+                            <button type="button" class="prompt-composer__action prompt-composer__action--primary" data-action="open" aria-label="Ask for demo">
+                                <svg viewBox="0 0 20 20" aria-hidden="true">
+                                    <path d="M11 3h6a1 1 0 0 1 1 1v6h-2V5.414l-9.293 9.293-1.414-1.414L14.586 4H11V2Z"/>
+                                    <path d="M5 5h4v2H6v8h8v-3h2v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="invoices-count">
+                    <p class="flex justify-center items-center">Already&nbsp;<span class="inline-block text-4xl font-bold">+</span><span class="counter">0</span>&nbsp;invoices scanned</p>
+                    <button type="button" class="text-white rounded-lg text-4xl! px-10 py-5 text-center animation-button hover:cursor-pointer">Create an account</button>
+                </div>
+
+                <div class="scroll-down-container">
+                    <span class="scroll-down"></span>
+                </div>
+            </div>
+
             <div class="motion-animation">
                 <div class="motion-animation-video" role="region" aria-label="Video player">
+                    <!-- <video preload="metadata" poster="https://image.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc/thumbnail.webp?width=1920&fit_mode=preserve&time=0" class="w-full h-full object-fill" playsinline="" src="/assets/videos/87789-602074264.mp4" autoplay loop></video> -->
                     <video preload="metadata" poster="https://image.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc/thumbnail.webp?width=1920&fit_mode=preserve&time=0" class="w-full h-full object-fill" playsinline="" src="https://stream.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc.m3u8" autoplay loop></video>
                 </div>
             </div>
         </div>
-        <div class="content-block">
+        <div class="content-block text-5xl p-20 max-w-800! mx-auto">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
