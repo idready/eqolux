@@ -43,7 +43,7 @@ const setupPromptComposer = () => {
         return map;
     }, {});
 
-    const requiredKeys = ['verb', 'subject', 'trigger', 'destination'];
+    const requiredKeys = ['verb', 'subject', 'trigger'];
     const hasAllKeys = requiredKeys.every((key) => selectsByKey[key]);
     if (!hasAllKeys) {
         return;
@@ -56,8 +56,6 @@ const setupPromptComposer = () => {
             `${selectsByKey.subject.value},`,
             'detects when',
             selectsByKey.trigger.value,
-            'and send it to',
-            selectsByKey.destination.value,
         ].join(' ').replace(/\s+,/g, ',');
     };
 
@@ -139,11 +137,60 @@ const counter = () => {
     const countInterval = setInterval(updateCounter, 10); // Update every 10 milliseconds
 };
 
+let dynamicTextInterval;
+
+const updateDynamicText = () => {
+    const dynamicTextElement = document.querySelector('.dynamic-text');
+    const texts = ['time', 'hassle', 'costs'];
+
+    if (!dynamicTextElement || texts.length === 0) {
+        return;
+    }
+
+    let index = 0;
+    dynamicTextElement.textContent = texts[index];
+    dynamicTextElement.classList.add('chroma-text');
+    dynamicTextElement.classList.add('chroma-text-animate');
+
+    const restartAnimation = () => {
+        dynamicTextElement.classList.remove('chroma-text-animate');
+        // Force reflow so CSS animation can restart.
+        void dynamicTextElement.offsetWidth;
+        dynamicTextElement.classList.add('chroma-text-animate');
+    };
+
+    dynamicTextInterval = window.setInterval(() => {
+        index = (index + 1) % texts.length;
+        dynamicTextElement.textContent = texts[index];
+        restartAnimation();
+    }, 3000);
+};
+
+const initVideoBackgrounds = () => {
+    const videoContainers = document.querySelectorAll('.motion-animation-video');
+    const videosFiles =  [
+        '/assets/videos/85590-590014592.mp4',
+        '/assets/videos/87789-602074264.mp4',
+        '/assets/videos/104629-667563131.mp4'
+    ]
+    videoContainers.forEach((container) => {
+        const video = container.querySelector('video');
+        if (video) {
+            video.src =  videosFiles[Math.floor(Math.random() * videosFiles.length)];
+            video.play().catch((error) => {
+                console.error('Error playing video background:', error);
+            });
+        }
+    });
+}
+
 const main = () => {
+    // initVideoBackgrounds();
     setupDrawer();
     setupPromptComposer();
+    updateDynamicText();
 
-    const onIntersection = (entries) => {
+    const onIntersection = (entries, observer) => {
         for (const entry of entries) {
             if (entry.isIntersecting) {
                 counter();
