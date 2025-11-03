@@ -6,6 +6,9 @@
     min-height: 100vh;
     position: relative;
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
 
     &:after {
         position: absolute;
@@ -20,7 +23,19 @@
         mask-image: linear-gradient(180deg, transparent 0, variables.$bg-color 90%);
     }
     
-    
+    .hero-main-contain {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 2rem;
+        gap: 2rem;
+        min-height: 100%;
+    }
+
     .motion-animation {
         pointer-events: none; 
         position: absolute; 
@@ -38,5 +53,10 @@
             width: 100%;
             object-fit: fill;
         }
+    }
+
+    .main-title {
+        font-size: calc((variables.$heading-1-size-value - 1) * 1.2vw + 1rem);
+        line-height: 1;
     }
 }
