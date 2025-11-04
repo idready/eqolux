@@ -65,7 +65,7 @@
 
 .chroma-text {
     // @TODO: Change these colors to match the design system
-    background-image: linear-gradient(90deg, #155dfc 0, #0b3591 10%, #c679c4 40%, #fa3d1d 45%, #ffb005 50%, #e1e1fe 55%, #0358f7 60%, transparent 66.67%, transparent);
+    background-image: linear-gradient(90deg,#1c398e 0,#1c398e 33.33%,#c679c4 40%,#fa3d1d 45%,#ffb005 50%,#e1e1fe 55%,#0358f7 60%,transparent 66.67%,transparent);
     background-size: 300% 100%;
     background-position: 100% 0;
     will-change: background-position;
@@ -77,7 +77,7 @@
 }
 
 .chroma-text-animate {
-    animation: chroma-sweep .9s ease-in-out .3s forwards;
+    animation: chroma-sweep 1s ease-in-out .3s forwards;
     filter: blur(1px);
 }
 
@@ -92,5 +92,6 @@
         background-position: 0 0;
         filter: blur(0);
         opacity: 1;
+        background-color: #1c398e;
     }
 }
