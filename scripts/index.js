@@ -200,34 +200,77 @@ const scrollDirectionDetector = () => {
 };
 
 const stickHeaderOnScroll = () => {
-    const header = document.querySelector('header');
+    const header = document.querySelector('.hero-block header');
     if (!header) {
         return;
     }
 
-    const detectScrollDirection = scrollDirectionDetector();
+    let stickyThreshold = header.offsetHeight * 2;
+    let lastKnownScroll = window.scrollY || 0;
+    let ticking = false;
+    let isSticky = false;
+    let isVisible = true;
 
-    window.addEventListener('scroll', () => {
-        const direction = detectScrollDirection();
-        console.log(window.scrollY, direction);
-        if (direction === 'down') {
-            header.classList.remove('is-sticky');
-            header.classList.add('animation-slide-out');
-            header.classList.remove('animation-slide-in');
-        } else if (direction === 'up' && window.scrollY > header.getBoundingClientRect().height * 2) {
-            header.classList.add('is-sticky');
-            header.classList.add('animation-slide-in');
-            header.classList.remove('animation-slide-out');
-        } else {
-            header.classList.remove('animation-slide-in');
-            header.classList.add('animation-slide-out');
-            header.classList.remove('is-sticky');
+    const playAnimation = (animationClass) => {
+        header.classList.remove('animation-slide-in', 'animation-slide-out');
+        void header.offsetWidth;
+        header.classList.add(animationClass);
+    };
+
+    const updateState = () => {
+        const currentScroll = window.scrollY || window.pageYOffset;
+        const direction = currentScroll > lastKnownScroll ? 'down' : 'up';
+        lastKnownScroll = currentScroll;
+
+        if (currentScroll > stickyThreshold) {
+            if (!isSticky) {
+                header.classList.add('is-sticky');
+                isSticky = true;
+                isVisible = direction !== 'down';
+                playAnimation(isVisible ? 'animation-slide-in' : 'animation-slide-out');
+            } else {
+                if (direction === 'down' && isVisible) {
+                    playAnimation('animation-slide-out');
+                    isVisible = false;
+                } else if (direction === 'up' && !isVisible) {
+                    playAnimation('animation-slide-in');
+                    isVisible = true;
+                }
+            }
+        } else if (isSticky) {
+            header.classList.remove('is-sticky', 'animation-slide-in', 'animation-slide-out');
+            isSticky = false;
+            isVisible = true;
         }
-    });
-}
+
+        ticking = false;
+    };
+
+    const onScroll = () => {
+        if (!ticking) {
+            window.requestAnimationFrame(updateState);
+            ticking = true;
+        }
+    };
+
+    const onResize = () => {
+        stickyThreshold = header.offsetHeight * 2;
+        updateState();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+
+    updateState();
+};
+
+const playVideo = () => {
+    document.querySelector('.motion-animation-video video').play();
+};
 
 const main = () => {
     // initVideoBackgrounds();
+    playVideo();
     stickHeaderOnScroll();
     setupDrawer();
     setupPromptComposer();

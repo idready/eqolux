@@ -3,13 +3,14 @@
 @use "sass:color";
 @use "variables";
 
+@use "animations";
 @use "typography";
 @use "header";
 @use "hero";
-@use "animations";
 @use "drawer";
 @use "prompts";
 @use "scrollbar";
+// @use "select";
 @use "scroll-down-animation";
 
 html {

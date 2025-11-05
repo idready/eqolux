@@ -7,6 +7,7 @@
     gap: 2.4rem;
     padding: 0 2.4rem;
     color: #111827;
+    animation: slide-from-right 0.8s ease-in-out 0.3s forwards;
 
     @media (min-width: 768px) {
         padding: 0;
@@ -64,7 +65,9 @@
     text-align: left;
     gap: 1.2rem;
     font-size: clamp(1.4rem, 2vw, 2rem);
-    line-height: 2.5;
+    line-height: 3;
+
+    @media 
 
     span {
         color: #1f2937;
@@ -149,7 +152,6 @@
     &--secondary {
         background: variables.$white;
         color: variables.$scrollbar-color-track;
-;
 
         &:hover,
         &:focus-visible {
@@ -182,6 +184,33 @@
         border-color: rgba(99, 102, 241, 0.6);
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     }
+
+    // option {
+    //   display: flex;
+    //   align-items: center;
+    //   cursor: pointer;
+    //   padding: 10px;
+    //   gap: 10px;
+    //   border-top: 1px solid #444;
+    //   &:where(:hover, :focus, :active) {
+    //     background: #4B534B;
+    //     color: white;
+    //     font-weight: bold;
+    //   }
+    //   &:checked {
+    //     background: #50C878;
+    //     color: white;
+    //     font-weight: bold;
+    //   }
+    //   &::checkmark {
+    //     display: none; /* Remove original active option */
+    //   }
+    // }
+    // selectedcontent {
+    //   display: flex;
+    //   align-items: center;
+    //   gap: 10px;
+    // }
 }
 
 .prompt-token::after {
