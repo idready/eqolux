@@ -161,7 +161,12 @@ const updateDynamicText = () => {
 
     dynamicTextInterval = window.setInterval(() => {
         index = (index + 1) % texts.length;
-        dynamicTextElement.textContent = texts[index];
+        // Version with Typewriter effect (commented out)
+        new Typewriter('.chroma-text-animate', {
+            strings: [texts[index]],
+            autoStart: true,
+        });
+        // dynamicTextElement.textContent = texts[index];
         restartAnimation();
     }, 3000);
 };
@@ -184,8 +189,46 @@ const initVideoBackgrounds = () => {
     });
 }
 
+const scrollDirectionDetector = () => {
+    let lastScrollTop = 0;
+    return () => {
+        const st = window.pageYOffset || document.documentElement.scrollTop;
+        const direction = (st > lastScrollTop) ? 'down' : 'up';
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        return direction;
+    };
+};
+
+const stickHeaderOnScroll = () => {
+    const header = document.querySelector('header');
+    if (!header) {
+        return;
+    }
+
+    const detectScrollDirection = scrollDirectionDetector();
+
+    window.addEventListener('scroll', () => {
+        const direction = detectScrollDirection();
+        console.log(window.scrollY, direction);
+        if (direction === 'down') {
+            header.classList.remove('is-sticky');
+            header.classList.add('animation-slide-out');
+            header.classList.remove('animation-slide-in');
+        } else if (direction === 'up' && window.scrollY > header.getBoundingClientRect().height * 2) {
+            header.classList.add('is-sticky');
+            header.classList.add('animation-slide-in');
+            header.classList.remove('animation-slide-out');
+        } else {
+            header.classList.remove('animation-slide-in');
+            header.classList.add('animation-slide-out');
+            header.classList.remove('is-sticky');
+        }
+    });
+}
+
 const main = () => {
     // initVideoBackgrounds();
+    stickHeaderOnScroll();
     setupDrawer();
     setupPromptComposer();
     updateDynamicText();

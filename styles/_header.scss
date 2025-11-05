@@ -1,5 +1,25 @@
 @use 'variables';
 
+.header-container {
+
+    position: relative;
+
+    // &::after {
+    //     border-radius: 3rem;
+    //     content: "";
+    //     position: absolute;
+    //     bottom: 0;
+    //     left: 0;
+    //     right: 0;
+    //     height: 60%;
+    //     transform: translateY(-35%);
+    //     background-color: variables.$white;
+    //     z-index: -1;
+    //     filter: blur(30px);
+    //     width: 100%;
+    // }
+}
+
 .hero-block {
 
     position: relative;
@@ -11,9 +31,6 @@
         flex-flow: row nowrap;
         align-items: center;
         justify-content: space-between;
-        position: relative;
-        // position: sticky;
-        // top: 0;
         z-index: 4;
 
         .header-logo {
@@ -22,17 +39,65 @@
             max-width: 100%;
         }
 
-        // &::after {
-        //     content: "";
-        //     position: absolute;
-        //     bottom: 0;
-        //     left: 0;
-        //     right: 0;
-        //     height: 100%;
-        //     background-color: variables.$white;
-        //     z-index: -1;
-        //     filter: blur(1px);
-        // }
+        &.is-sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+
+            .header-container {
+                &::after {
+                    border-radius: 3rem;
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    height: 60%;
+                    transform: translateY(-35%);
+                    background-color: variables.$white;
+                    z-index: -1;
+                    filter: blur(3px);
+                    width: 100%;
+                }
+            }
+        }
+
+        .animation-slide-in {
+            animation: slideInFromTop 0.3s ease-in-out forwards;
+        }
+
+        .animation-slide-out {
+            animation: slideDown 0.3s ease-in-out forwards;
+        }
+
+        @keyframes slideOutToTop {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-100%);
+            }
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
     }
 
     .hero {
