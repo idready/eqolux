@@ -209,38 +209,33 @@ const stickHeaderOnScroll = () => {
     let lastKnownScroll = window.scrollY || 0;
     let ticking = false;
     let isSticky = false;
-    let isVisible = true;
-
-    const playAnimation = (animationClass) => {
-        header.classList.remove('animation-slide-in', 'animation-slide-out');
-        void header.offsetWidth;
-        header.classList.add(animationClass);
-    };
 
     const updateState = () => {
         const currentScroll = window.scrollY || window.pageYOffset;
-        const direction = currentScroll > lastKnownScroll ? 'down' : 'up';
+        const delta = currentScroll - lastKnownScroll;
+        let direction = null;
+
+        if (Math.abs(delta) > 4) {
+            direction = delta > 0 ? 'down' : 'up';
+        }
+
         lastKnownScroll = currentScroll;
 
         if (currentScroll > stickyThreshold) {
             if (!isSticky) {
                 header.classList.add('is-sticky');
+                header.classList.remove('is-visible');
                 isSticky = true;
-                isVisible = direction !== 'down';
-                playAnimation(isVisible ? 'animation-slide-in' : 'animation-slide-out');
-            } else {
-                if (direction === 'down' && isVisible) {
-                    playAnimation('animation-slide-out');
-                    isVisible = false;
-                } else if (direction === 'up' && !isVisible) {
-                    playAnimation('animation-slide-in');
-                    isVisible = true;
-                }
+            }
+
+            if (direction === 'up') {
+                header.classList.add('is-visible');
+            } else if (direction === 'down') {
+                header.classList.remove('is-visible');
             }
         } else if (isSticky) {
-            header.classList.remove('is-sticky', 'animation-slide-in', 'animation-slide-out');
+            header.classList.remove('is-sticky', 'is-visible');
             isSticky = false;
-            isVisible = true;
         }
 
         ticking = false;
@@ -272,9 +267,9 @@ const main = () => {
     // initVideoBackgrounds();
     playVideo();
     stickHeaderOnScroll();
-    setupDrawer();
     setupPromptComposer();
-    updateDynamicText();
+    setupDrawer();
+    // updateDynamicText();
 
     const onIntersection = (entries, observer) => {
         for (const entry of entries) {
@@ -285,7 +280,12 @@ const main = () => {
     };
 
     const observer = new IntersectionObserver(onIntersection);
-    observer.observe(document.querySelector(".invoices-count"));
+    // observer.observe(document.querySelector(".invoices-count"));
+    
+    window.setTimeout(() => {
+        updateDynamicText();
+        observer.observe(document.querySelector(".invoices-count"));
+    }, 800);
 };
 
 document.addEventListener('DOMContentLoaded', main);
