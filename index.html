@@ -65,45 +65,51 @@
                                     <path d="M19.667 10.806c1.084-.154 1.87-.268 2.357-.341.486-.073.82-.109 1.002-.109.794 0 1.433.26 1.916.78.482.492.724 1.15.724 1.972 0 .822-.242 1.496-.724 2.023-.483.492-1.122.738-1.916.738-.265 0-.676-.036-1.233-.109-.53-.073-1.463-.228-2.799-.464l-3.69-.637 2.602 3.036c1.042 1.213 1.695 2.05 1.96 2.51.266.459.398.898.398 1.318 0 .822-.232 1.479-.695 1.972-.483.52-1.094.78-1.833.78-.794 0-1.405-.279-1.833-.837-.427-.557-.99-1.792-1.688-3.705l-1.676-4.496-1.676 4.496c-.698 1.913-1.26 3.148-1.688 3.705-.428.558-1.039.837-1.833.837-.739 0-1.35-.26-1.832-.78-.464-.493-.695-1.15-.695-1.972 0-.42.133-.859.398-1.318.266-.46.918-1.297 1.96-2.51l2.603-3.036-3.69.637c-1.336.237-2.269.392-2.799.464-.557.073-.968.109-1.233.109-.794 0-1.433-.246-1.916-.738-.482-.527-.723-1.201-.723-2.023 0-.822.241-1.48.723-1.972.483-.52 1.122-.78 1.916-.78.182 0 .516.036 1.002.109.486.073 1.273.187 2.357.341l3.69.637-2.603-3.036c-1.042-1.213-1.695-2.05-1.96-2.51-.266-.46-.398-.899-.398-1.318 0-.822.231-1.48.695-1.973.482-.52 1.093-.779 1.832-.779.794 0 1.405.278 1.833.836.428.558.99 1.793 1.688 3.706l1.676 4.496 1.676-4.496c.698-1.913 1.261-3.148 1.688-3.706.428-.558 1.039-.836 1.833-.836.739 0 1.35.26 1.833.779.463.493.695 1.151.695 1.973 0 .419-.133.858-.398 1.318-.265.46-.918 1.297-1.96 2.51l-2.603 3.036 3.69-.637z"/>
                                 </svg>
                             </div>
-                            <p class="prompt-composer__sentence leading-[3]!">
+                            <div class="prompt-composer__sentence leading-[3]!">
                                 <span>As a </span>
-                                <label class="prompt-token">
-                                    <span class="sr-only">Select an action verb</span>
-                                    <select class="prompt-token__label" data-token="verb" aria-label="Action verb">
-                                    <!-- <select class="prompt-token__label" data-token="verb" aria-label="Action verb"> -->
-                                        <option value="monitors">CFO</option>
-                                        <option value="tracks">ESG Manager</option>
-                                        <option value="syncs">Purchasing Director</option>
-                                        <option value="audits">Quality Manager</option>
-                                    </select>
-                                </label>
+                                <div class="prompt-token" data-token="verb">
+                                    <span class="sr-only" id="prompt-token-verb-label">Select a role</span>
+                                    <button type="button" class="prompt-token__label" data-token="verb" aria-labelledby="prompt-token-verb-label" aria-expanded="false" aria-haspopup="listbox">
+                                        <span class="prompt-token__label-text">CFO</span>
+                                    </button>
+                                    <ul class="prompt-token__menu" role="listbox" aria-labelledby="prompt-token-verb-label">
+                                        <li><button type="button" role="option" class="prompt-token__option is-active" data-value="CFO" aria-selected="true">CFO</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="ESG Manager" aria-selected="false">ESG Manager</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Purchasing Director" aria-selected="false">Purchasing Director</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Quality Manager" aria-selected="false">Quality Manager</button></li>
+                                    </ul>
+                                </div>
                                 <span>, I want to identify the</span>
-                                <label class="prompt-token">
-                                    <span class="sr-only">Select a subject</span>
-                                    <select class="prompt-token__label" data-token="subject" aria-label="Subject">
-                                    <!-- <select class="prompt-token__label" data-token="subject" aria-label="Subject"> -->
-                                        <option value="website/platform">Biggest price increase</option>
-                                        <option value="CRM pipeline">Most important products</option>
-                                        <option value="Slack workspace">Average price for chicken</option>
-                                        <option value="email inbox">Biggest difference between min. and max. unit price</option>
-                                        <option value="analytics dashboard">Biggest Co2 impact, per product category</option>
-                                        <option value="analytics dashboard">Biggest cost savings</option>
-                                        <option value="analytics dashboard">Highest return rate per supplier</option>
-                                    </select>
-                                </label>
-                                <span> in the last </span>
-                                <label class="prompt-token">
-                                    <span class="sr-only">Select a trigger</span>
-                                    <select class="prompt-token__label" data-token="trigger" aria-label="Trigger">
-                                    <!-- <select class="prompt-token__label" data-token="trigger" aria-label="Trigger"> -->
-                                        <option value="action occurs">6 months</option>
-                                        <option value="action occurs">8 months</option>
-                                        <option value="action occurs">12 months</option>
-                                        <option value="action occurs">24 months</option>
-                                    </select>
-                                </label>
-                                <span>for my hospitality company ?</span>
-                            </p>
+                                <div class="prompt-token" data-token="subject">
+                                    <span class="sr-only" id="prompt-token-subject-label">Select a focus area</span>
+                                    <button type="button" class="prompt-token__label" data-token="subject" aria-labelledby="prompt-token-subject-label" aria-expanded="false" aria-haspopup="listbox">
+                                        <span class="prompt-token__label-text">Biggest price increase</span>
+                                    </button>
+                                    <ul class="prompt-token__menu" role="listbox" aria-labelledby="prompt-token-subject-label">
+                                        <li><button type="button" role="option" class="prompt-token__option is-active" data-value="Biggest price increase" aria-selected="true">Biggest price increase</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Most important products" aria-selected="false">Most important products</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Average price for chicken" aria-selected="false">Average price for chicken</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Biggest difference between min. and max. unit price" aria-selected="false">Biggest difference between min. and max. unit price</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Biggest CO2 impact per product category" aria-selected="false">Biggest CO2 impact per product category</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Biggest cost savings" aria-selected="false">Biggest cost savings</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="Highest return rate per supplier" aria-selected="false">Highest return rate per supplier</button></li>
+                                    </ul>
+                                </div>
+                                <span>in the last</span>
+                                <div class="prompt-token" data-token="trigger">
+                                    <span class="sr-only" id="prompt-token-trigger-label">Select a timeframe</span>
+                                    <button type="button" class="prompt-token__label" data-token="trigger" aria-labelledby="prompt-token-trigger-label" aria-expanded="false" aria-haspopup="listbox">
+                                        <span class="prompt-token__label-text">6 months</span>
+                                    </button>
+                                    <ul class="prompt-token__menu" role="listbox" aria-labelledby="prompt-token-trigger-label">
+                                        <li><button type="button" role="option" class="prompt-token__option is-active" data-value="6 months" aria-selected="true">6 months</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="8 months" aria-selected="false">8 months</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="12 months" aria-selected="false">12 months</button></li>
+                                        <li><button type="button" role="option" class="prompt-token__option" data-value="24 months" aria-selected="false">24 months</button></li>
+                                    </ul>
+                                </div>
+                                <span>for my hospitality company.</span>
+                            </div>
                         </div>
                         <label class="prompt-composer__editor" for="prompt-composer-textarea">
                         <span class="sr-only">Prompt</span>

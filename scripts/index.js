@@ -26,41 +26,73 @@ const setupPromptComposer = () => {
         return;
     }
 
-    const tokenSelects = Array.from(surface.querySelectorAll('.prompt-token__label'));
+    if (surface.dataset.composerInitialized === 'true') {
+        return;
+    }
+
+    const tokenElements = Array.from(surface.querySelectorAll('.prompt-token'));
     const shuffleBtn = surface.querySelector('[data-action="shuffle"]');
     const openBtn = surface.querySelector('[data-action="open"]');
     const textarea = surface.querySelector('#prompt-composer-textarea');
 
-    if (!tokenSelects.length || !textarea) {
+    if (!tokenElements.length || !textarea) {
         return;
     }
 
-    const selectsByKey = tokenSelects.reduce((map, select) => {
-        const key = select.dataset.token;
-        if (key) {
-            map[key] = select;
+    const tokensByKey = tokenElements.reduce((acc, tokenEl) => {
+        const key = tokenEl.dataset.token;
+        const button = tokenEl.querySelector('.prompt-token__label');
+        const menu = tokenEl.querySelector('.prompt-token__menu');
+        const options = Array.from(tokenEl.querySelectorAll('.prompt-token__option'));
+        const labelText = button?.querySelector('.prompt-token__label-text') || button;
+
+        if (!key || !button || !menu || options.length === 0) {
+            return acc;
         }
-        return map;
+
+        let activeOption = options.find((option) => option.classList.contains('is-active')) || options[0];
+        const value = activeOption.dataset.value || activeOption.textContent.trim();
+
+        options.forEach((option) => {
+            const isActive = option === activeOption;
+            option.classList.toggle('is-active', isActive);
+            option.setAttribute('aria-selected', String(isActive));
+        });
+
+        labelText.textContent = value;
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-haspopup', 'listbox');
+
+        acc[key] = {
+            key,
+            token: tokenEl,
+            button,
+            menu,
+            options,
+            labelText,
+            value,
+            activeOption,
+        };
+
+        return acc;
     }, {});
 
     const requiredKeys = ['verb', 'subject', 'trigger'];
-    const hasAllKeys = requiredKeys.every((key) => selectsByKey[key]);
+    const hasAllKeys = requiredKeys.every((key) => tokensByKey[key]);
     if (!hasAllKeys) {
         return;
     }
 
-    const composePrompt = () => {
-        return [
-            'Build me a workflow that',
-            selectsByKey.verb.value,
-            `${selectsByKey.subject.value},`,
-            'detects when',
-            selectsByKey.trigger.value,
-        ].join(' ').replace(/\s+,/g, ',');
-    };
-
     let customPrompt = '';
     let customPromptDirty = false;
+
+    const composePrompt = () => {
+        const role = tokensByKey.verb.value;
+        const focus = tokensByKey.subject.value;
+        const timeframe = tokensByKey.trigger.value;
+
+        return `As a ${role}, I want to identify the ${focus} in the last ${timeframe} for my hospitality company.`;
+    };
 
     const updateTextareaIfPristine = () => {
         if (!customPromptDirty) {
@@ -69,32 +101,142 @@ const setupPromptComposer = () => {
         }
     };
 
+    const closeMenu = (state) => {
+        state.token.classList.remove('is-open');
+        state.button.setAttribute('aria-expanded', 'false');
+    };
+
+    const closeAllMenus = () => {
+        Object.values(tokensByKey).forEach((state) => closeMenu(state));
+    };
+
+    const openMenu = (state) => {
+        closeAllMenus();
+        state.token.classList.add('is-open');
+        state.button.setAttribute('aria-expanded', 'true');
+        window.requestAnimationFrame(() => {
+            const focusTarget = state.activeOption || state.options[0];
+            if (focusTarget) {
+                focusTarget.focus({ preventScroll: true });
+            }
+        });
+    };
+
+    const toggleMenu = (state) => {
+        if (state.token.classList.contains('is-open')) {
+            closeMenu(state);
+        } else {
+            openMenu(state);
+        }
+    };
+
+    const selectOption = (state, option, { shouldUpdate = true, close = true, focusTrigger = true } = {}) => {
+        state.options.forEach((opt) => {
+            const isActive = opt === option;
+            opt.classList.toggle('is-active', isActive);
+            opt.setAttribute('aria-selected', String(isActive));
+        });
+
+        state.value = option.dataset.value || option.textContent.trim();
+        state.labelText.textContent = state.value;
+        state.activeOption = option;
+
+        if (close) {
+            closeMenu(state);
+        }
+
+        if (focusTrigger) {
+            state.button.focus({ preventScroll: true });
+        }
+
+        if (shouldUpdate) {
+            updateTextareaIfPristine();
+        }
+    };
+
+    Object.values(tokensByKey).forEach((state) => {
+        state.button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            toggleMenu(state);
+        });
+
+        state.button.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openMenu(state);
+            }
+        });
+
+        state.options.forEach((option) => {
+            option.addEventListener('click', (event) => {
+                event.stopPropagation();
+                selectOption(state, option);
+            });
+
+            option.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    selectOption(state, option);
+                } else if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeMenu(state);
+                    state.button.focus({ preventScroll: true });
+                } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    const currentIndex = state.options.indexOf(option);
+                    const nextIndex = event.key === 'ArrowDown'
+                        ? (currentIndex + 1) % state.options.length
+                        : (currentIndex - 1 + state.options.length) % state.options.length;
+                    state.options[nextIndex].focus({ preventScroll: true });
+                }
+            });
+        });
+    });
+
+    const handleDocumentClick = (event) => {
+        if (!surface.contains(event.target)) {
+            closeAllMenus();
+        }
+    };
+
+    const handleEscapeKey = (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        const openState = Object.values(tokensByKey).find((state) => state.token.classList.contains('is-open'));
+        if (!openState) {
+            return;
+        }
+
+        closeAllMenus();
+        openState.button.focus({ preventScroll: true });
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+    document.addEventListener('keydown', handleEscapeKey);
+
     const randomizeTokens = () => {
-        requiredKeys.forEach((key) => {
-            const select = selectsByKey[key];
-            const optionCount = select.options.length;
-            if (optionCount <= 1) {
+        closeAllMenus();
+
+        Object.values(tokensByKey).forEach((state) => {
+            const options = state.options;
+            if (options.length <= 1) {
                 return;
             }
 
-            const currentIndex = select.selectedIndex;
-            let nextIndex = Math.floor(Math.random() * optionCount);
+            const currentIndex = options.indexOf(state.activeOption);
+            let nextIndex = Math.floor(Math.random() * options.length);
 
-            if (optionCount > 1 && nextIndex === currentIndex) {
-                nextIndex = (currentIndex + 1) % optionCount;
+            if (options.length > 1 && nextIndex === currentIndex) {
+                nextIndex = (currentIndex + 1) % options.length;
             }
 
-            select.selectedIndex = nextIndex;
+            selectOption(state, options[nextIndex], { shouldUpdate: false, close: false, focusTrigger: false });
         });
 
         updateTextareaIfPristine();
     };
-
-    tokenSelects.forEach((select) => {
-        select.addEventListener('change', () => {
-            updateTextareaIfPristine();
-        });
-    });
 
     if (shuffleBtn) {
         shuffleBtn.addEventListener('click', randomizeTokens);
@@ -113,6 +255,7 @@ const setupPromptComposer = () => {
     });
 
     updateTextareaIfPristine();
+    surface.dataset.composerInitialized = 'true';
 };
 
 const counter = () => {
