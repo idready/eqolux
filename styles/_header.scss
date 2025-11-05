@@ -46,6 +46,8 @@
         align-items: center;
         justify-content: space-between;
         z-index: 4;
+        transition: transform 0.3s ease-in-out;
+        will-change: transform;
 
         .header-logo {
             width: auto;
@@ -56,8 +58,12 @@
         &.is-sticky {
             position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
             overflow: hidden;
+            transform: translateY(-100%);
+            // box-shadow: 0 12px 30px rgba(23, 23, 23, 0.08);
 
             .header-container {
                 &::after {
@@ -77,32 +83,9 @@
             }
         }
 
-        &.animation-slide-in {
-            animation: slideInFromTop 0.3s ease-in-out forwards;
+        &.is-sticky.is-visible {
+            transform: translateY(0);
         }
-
-        &.animation-slide-out {
-            animation: slideOutToTop 0.25s ease-in-out forwards;
-        }
-
-        @keyframes slideOutToTop {
-            from {
-                transform: translateY(0);
-            }
-            to {
-                transform: translateY(-100%);
-            }
-        }
-
-        @keyframes slideInFromTop {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
     }
 
     .hero {

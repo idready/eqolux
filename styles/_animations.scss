@@ -163,3 +163,22 @@
     }
 }
 
+@keyframes slide-from-bottom {
+    from {
+        transform: translateY(40%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-from-top {
+    from {
+        transform: translateY(-40%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
