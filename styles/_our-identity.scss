@@ -1,0 +1,52 @@
+@use 'variables';
+
+.our-identity {
+
+    &--item {
+
+        margin-bottom: 15rem;
+
+        .label {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+            color: variables.$color-text-blue;
+        }
+        .subtitle {
+            color: variables.$grey;
+            font-size: clamp(1.8rem, 2vw, 2rem);
+            line-height: 1.4;
+        }
+        .media {
+            margin-top: 2rem;
+            // max-width: 60%;
+            border-radius: 1rem;
+        }
+
+
+        &.align-to-right,
+        &.align-to-left {
+            display: flex;
+        }
+
+        &.align-to-right {
+
+            // justify-content: flex-end;
+
+            .label,
+            .subtitle {
+                // text-align: right;
+            }
+        }
+
+        &.align-to-left {
+
+            // justify-content: flex-start;
+
+            .label,
+            .subtitle {
+                // text-align: left;
+            }
+        }
+    }
+}

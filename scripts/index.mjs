@@ -319,11 +319,13 @@ const initVideoBackgrounds = () => {
     const videosFiles =  [
         '/assets/videos/85590-590014592.mp4',
         '/assets/videos/87789-602074264.mp4',
-        '/assets/videos/104629-667563131.mp4'
+        '/assets/videos/104629-667563131.mp4',
+        '/assets/videos/131974-751915250.mp4',
     ]
     videoContainers.forEach((container) => {
         const video = container.querySelector('video');
         if (video) {
+            console.log(Math.floor(Math.random() * videosFiles.length));
             video.src =  videosFiles[Math.floor(Math.random() * videosFiles.length)];
             video.play().catch((error) => {
                 console.error('Error playing video background:', error);
@@ -406,10 +408,21 @@ const playVideo = () => {
     document.querySelector('.motion-animation-video video').play();
 };
 
+const addAnimationOnView = (entry) => {
+
+    if (entry.classList.contains('sm:justify-end')) {
+        entry.classList.add('slide-from-right');
+    } else {
+        entry.classList.add('slide-from-left');
+    }
+    const label = entry.querySelector('.label span');
+    label.classList.add('chroma-text', 'chroma-text-animate');
+};
+
 const main = () => {
-    // initVideoBackgrounds();
+    initVideoBackgrounds();
     playVideo();
-    stickHeaderOnScroll();
+    // stickHeaderOnScroll();
     setupPromptComposer();
     setupDrawer();
     // updateDynamicText();
@@ -419,15 +432,22 @@ const main = () => {
             if (entry.isIntersecting) {
                 counter();
             }
+
+            if (entry.isVisible && entry.target.classList.contains('our-identity--item')) {
+                addAnimationOnView(entry.target);
+            }
         }
     };
 
-    const observer = new IntersectionObserver(onIntersection);
-    // observer.observe(document.querySelector(".invoices-count"));
+    const observer = new IntersectionObserver(onIntersection, { trackVisibility: true, delay: 100});
     
     window.setTimeout(() => {
         updateDynamicText();
         observer.observe(document.querySelector(".invoices-count"));
+        observer.observe(document.querySelector(".mobile-menu"));
+        document.querySelectorAll(".our-identity--item").forEach(selector => {
+            observer.observe(selector);
+        })
     }, 800);
 };
 

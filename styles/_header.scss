@@ -24,6 +24,10 @@
         opacity: 0.2;
         animation: slide-from-left 0.4s ease-in-out 0.3s forwards;
     }
+    
+    .mobile-menu {
+        animation: slide-from-right 0.4s ease-in-out 0.3s forwards;
+    }
 
     #navbar-default {
         transform: translateX(40%);

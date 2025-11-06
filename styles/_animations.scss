@@ -123,6 +123,14 @@
     filter: blur(1px);
 }
 
+$animations-directions: slide-from-top, slide-from-bottom, slide-from-left, slide-from-right;
+
+@each $animation-direction in $animations-directions {
+  .#{$animation-direction} {
+    animation: #{$animation-direction} 0.8s ease-in-out 0.3s forwards;
+  }
+}
+
 @keyframes chroma-sweep {
     0% {
         background-position: 100% 0;

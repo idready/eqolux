@@ -1,0 +1,17 @@
+
+.sponsors {
+
+    margin-bottom: 5rem;
+
+    .sponsor-image {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    img {
+        max-width: 85%;
+        min-width: 50%;
+        object-fit: contain;
+    }
+}

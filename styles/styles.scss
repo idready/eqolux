@@ -4,14 +4,16 @@
 @use "variables";
 
 @use "animations";
+@use "scroll-down-animation";
 @use "typography";
 @use "header";
 @use "hero";
 @use "drawer";
 @use "prompts";
 @use "scrollbar";
-// @use "select";
-@use "scroll-down-animation";
+@use "sponsors";
+@use "our-identity";
+// @use "footer";
 
 html {
     scroll-behavior: smooth;
@@ -34,6 +36,10 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto minmax(3rem, 1fr) auto;
+
+
+    // position: relative;
+    // z-index: 1;
 }
 
 .container-width {
