@@ -20,6 +20,59 @@ const setupDrawer = () => {
     });
 };
 
+const setupAnimationButtons = () => {
+    const buttons = document.querySelectorAll('.animation-button');
+
+    if (!buttons.length) {
+        return;
+    }
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const updatePosition = (button, event) => {
+        const rect = button.getBoundingClientRect();
+
+        if (!rect.width || !rect.height) {
+            return;
+        }
+
+        const relativeX = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+        const relativeY = clamp((event.clientY - rect.top) / rect.height, 0, 1);
+
+        button.style.setProperty('--animation-button-pos-x', `${relativeX * 100}%`);
+        button.style.setProperty('--animation-button-pos-y', `${relativeY * 100}%`);
+    };
+
+    const startTracking = (button, event, handler) => {
+        button.classList.add('is-pointer-tracking');
+        button.addEventListener('pointermove', handler);
+        updatePosition(button, event);
+    };
+
+    const stopTracking = (button, handler) => {
+        button.classList.remove('is-pointer-tracking');
+        button.removeEventListener('pointermove', handler);
+        button.style.removeProperty('--animation-button-pos-x');
+        button.style.removeProperty('--animation-button-pos-y');
+    };
+
+    buttons.forEach((button) => {
+        const handlePointerMove = (event) => updatePosition(button, event);
+
+        button.addEventListener('pointerenter', (event) => {
+            startTracking(button, event, handlePointerMove);
+        });
+
+        button.addEventListener('pointerleave', () => {
+            stopTracking(button, handlePointerMove);
+        });
+
+        button.addEventListener('pointercancel', () => {
+            stopTracking(button, handlePointerMove);
+        });
+    });
+};
+
 const setupPromptComposer = () => {
     const surface = document.querySelector('.prompt-composer__surface');
     if (!surface) {
@@ -317,10 +370,11 @@ const updateDynamicText = () => {
 const initVideoBackgrounds = () => {
     const videoContainers = document.querySelectorAll('.motion-animation-video');
     const videosFiles =  [
-        '/assets/videos/85590-590014592.mp4',
-        '/assets/videos/87789-602074264.mp4',
-        '/assets/videos/104629-667563131.mp4',
-        '/assets/videos/131974-751915250.mp4',
+        // '/assets/videos/85590-590014592.mp4',
+        // '/assets/videos/87789-602074264.mp4',
+        // '/assets/videos/104629-667563131.mp4',
+        // '/assets/videos/131974-751915250.mp4',
+        '/assets/videos/87787-602074236.mp4'
     ]
     videoContainers.forEach((container) => {
         const video = container.querySelector('video');
@@ -419,13 +473,99 @@ const addAnimationOnView = (entry) => {
     label.classList.add('chroma-text', 'chroma-text-animate');
 };
 
+const initTestimonialsSlider = () => {
+    const sliderEl = document.querySelector('.testimonials__slider');
+
+    if (!sliderEl || typeof window.Swiper === 'undefined') {
+        return;
+    }
+
+    if (sliderEl.dataset.sliderInitialized === 'true') {
+        return;
+    }
+
+    const paginationEl = sliderEl.querySelector('.testimonials__pagination');
+    const nextButton = sliderEl.querySelector('.testimonials__nav--next');
+    const prevButton = sliderEl.querySelector('.testimonials__nav--prev');
+
+    const swiperConfig = {
+        loop: true,
+        speed: 600,
+        grabCursor: true,
+        centeredSlides: false,
+        watchSlidesProgress: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        slidesPerView: 1.05,
+        spaceBetween: 16,
+        breakpoints: {
+            480: {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+            },
+            640: {
+                slidesPerView: 1.5,
+                spaceBetween: 24,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 28,
+            },
+            1024: {
+                slidesPerView: 2.5,
+                spaceBetween: 32,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 32,
+            },
+        },
+        a11y: {
+            prevSlideMessage: 'Previous testimonial',
+            nextSlideMessage: 'Next testimonial',
+            firstSlideMessage: 'This is the first testimonial',
+            lastSlideMessage: 'This is the last testimonial',
+            slideLabelMessage: 'Testimonial {{index}} of {{slidesLength}}',
+        },
+    };
+
+    if (paginationEl) {
+        swiperConfig.pagination = {
+            el: paginationEl,
+            clickable: true,
+        };
+    }
+
+    if (nextButton && prevButton) {
+        swiperConfig.navigation = {
+            nextEl: nextButton,
+            prevEl: prevButton,
+        };
+    }
+
+    new window.Swiper(sliderEl, swiperConfig);
+    sliderEl.dataset.sliderInitialized = 'true';
+};
+
 const main = () => {
     initVideoBackgrounds();
     playVideo();
     // stickHeaderOnScroll();
     setupPromptComposer();
     setupDrawer();
+    setupAnimationButtons();
+    initTestimonialsSlider();
     // updateDynamicText();
+    tippy('[data-tippy-content]');
+
+    document.querySelectorAll('.ask-demo').forEach(element => {
+        element.addEventListener('click', () => {
+            window.open('https://calendly.com/marine-pescot/book-a-call', '_blank');
+        });
+    })
 
     const onIntersection = (entries, observer) => {
         for (const entry of entries) {

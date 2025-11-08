@@ -1,0 +1,249 @@
+@use "variables";
+
+.testimonials {
+    width: 100%;
+    padding: 6rem 0 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        max-width: 32rem;
+    }
+
+    &__title {
+        font-size: 3.2rem;
+        font-weight: 600;
+        color: variables.$color-text-blue;
+        line-height: 1.2;
+    }
+
+    &__subtitle {
+        font-size: 1.6rem;
+        color: variables.$grey;
+    }
+
+    &__slider {
+        width: 100%;
+        padding: 0 0 4.8rem;
+        position: relative;
+    }
+
+    &__list {
+        margin: 0;
+        padding: 0 2rem;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    .testimonial-card {
+        background: variables.$white;
+        border-radius: 2.4rem;
+        // box-shadow: 0 1.6rem 3.5rem rgba(35, 50, 84, 0.08);
+        padding: 2.4rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2.4rem;
+        text-align: left;
+
+        &__quote {
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: variables.$color-text;
+        }
+
+        &__author {
+            display: flex;
+            align-items: center;
+            gap: 1.6rem;
+        }
+
+        &__avatar {
+            width: 4.8rem;
+            height: 4.8rem;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0.8rem 1.8rem rgba(35, 50, 84, 0.12);
+        }
+
+        &__meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        &__name {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: variables.$color-text-blue;
+        }
+
+        &__role {
+            font-size: 1.3rem;
+            color: variables.$grey;
+        }
+    }
+
+    &__pagination {
+        position: absolute;
+        left: 50%;
+        bottom: 1.2rem;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        width: auto !important;
+    }
+
+    &__pagination .swiper-pagination-bullet {
+        width: 0.8rem;
+        height: 0.8rem;
+        background-color: rgba(35, 50, 84, 0.25);
+        opacity: 1;
+        transition: background-color 0.3s ease;
+    }
+
+    &__pagination .swiper-pagination-bullet-active {
+        background-color: variables.$color-text-blue;
+    }
+
+    &__controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6rem;
+        margin-top: -1.6rem;
+    }
+
+    &__nav {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.4rem;
+        height: 4.4rem;
+        border-radius: 50%;
+        background: variables.$white;
+        border: 1px solid rgba(35, 50, 84, 0.15);
+        color: variables.$color-text-blue;
+        font-size: 2.4rem;
+        line-height: 1;
+        box-shadow: 0 1rem 3rem rgba(35, 50, 84, 0.12);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+
+    &__nav span {
+        display: inline-block;
+        transform: translateY(-0.1rem);
+        font-weight: 600;
+    }
+
+    &__nav:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 0 1.6rem 3.5rem rgba(35, 50, 84, 0.18);
+        border-color: rgba(35, 50, 84, 0.3);
+    }
+
+    &__nav:focus-visible {
+        outline: 2px solid variables.$old-blue;
+        outline-offset: 2px;
+    }
+
+    &__cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.6rem;
+        max-width: 60rem;
+        padding: 0 2rem;
+    }
+
+    &__cta-title {
+        font-size: 3.4rem;
+        font-weight: 600;
+        color: variables.$color-text-blue;
+    }
+
+    &__cta-copy {
+        font-size: 1.8rem;
+        color: variables.$color-text;
+    }
+}
+
+@media (min-width: 48rem) {
+    .testimonials {
+        padding: 8rem 0 10rem;
+        gap: 4.8rem;
+
+        &__header {
+            max-width: 42rem;
+        }
+
+        &__title {
+            font-size: 4rem;
+        }
+
+        &__subtitle {
+            font-size: 1.8rem;
+        }
+
+        &__list {
+            padding: 0 4rem;
+        }
+
+        &__controls {
+            margin-top: -0.8rem;
+        }
+    }
+}
+
+@media (min-width: 64rem) {
+    .testimonials {
+        gap: 6rem;
+
+        &__slider {
+            max-width: 110rem;
+        }
+
+        &__controls {
+            margin-top: 0.8rem;
+            justify-content: flex-end;
+            padding: 0 4rem;
+        }
+    }
+}
+
+@media (max-width: 75rem) {
+    .testimonials {
+        &__slider {
+            padding-bottom: 5.6rem;
+        }
+
+        &__list {
+            padding: 0 1.6rem;
+        }
+
+        &__controls {
+            padding: 0 1.6rem;
+        }
+    }
+}
+
+@media (max-width: 56.25rem) {
+    .testimonials {
+        &__slider {
+            padding-bottom: 6.4rem;
+        }
+
+        &__controls {
+            padding: 0 1.2rem;
+        }
+    }
+}

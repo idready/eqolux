@@ -1,6 +1,7 @@
 @use 'variables';
 
 .drawer-block {
+    
     position: fixed;
     top: 0;
     right: 0;
@@ -17,6 +18,32 @@
         z-index: 1000;
         pointer-events: all;
         overflow: hidden;
+
+        // &::after {
+        //     position: absolute;
+        //     content: '';
+        //     background-color: red;
+        //     transform-origin: 50% 50%;
+        //     left: 50%;
+        //     top: 50%;
+        //     transform: translateY(-50%);
+        //     height: 100%;
+        //     width: 100%;
+        //     z-index: -1;
+        //     border-radius: 100%;
+        //     animation: ripple-backgrounnd 0.4s ease-in 0.2s forwards;
+        // }
+
+        // @keyframes ripple-backgrounnd {
+        //     from {
+        //         transform: scale(10);
+        //     }
+
+        //     to {
+        //         transform: scale(1);
+        //         background-color: variables.$white;
+        //     }
+        // }
     }
 
     &.active .drawer-content {

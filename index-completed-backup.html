@@ -19,14 +19,14 @@
     <meta itemprop="description" content="Boost margins and sustainability in just a few clicks. No manual work needed anymore. Tons of money saved!"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://unpkg.com/tippy.js@5/dist/backdrop.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body>
     <main class="main-container">
         <div class="hero-block">
             <header>
-                <div class="header-container expanded-container w-full mx-auto">
+                <div class="header-container container-width w-full mx-auto">
                     <div class="flex flex-wrap items-center justify-between mx-auto p-10 w-full">
                         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse logo-link">
                             <img class="header-logo" src="/assets/logo.png" alt="eqolux logo"/>
@@ -41,13 +41,7 @@
                         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                             <ul class="flex flex-col gap-5 p-4 mx-4 border items-center border-none rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse">
                                 <li>
-                                    <a href="#" target="_blank" class="text-2xl a-link">Ai Products</a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank" class="text-2xl a-link">Changelogs</a>
-                                </li>
-                                <li>
-                                    <a href="https://app.eqolux.com/login" target="_blank" class="text-2xl a-link">Login</a>
+                                    <a href="https://app.eqolux.com/login" target="_blank" class="text-2xl text-gray-600 hover:text-blue-600 hover:underline">Login</a>
                                 </li>
                                 <li>
                                     <button type="button" class="ask-demo text-white rounded-lg text-2xl! px-5 py-2.5 text-center animation-button hover:cursor-pointer">Ask For Demo</button>
@@ -59,14 +53,19 @@
             </header>
             <div class="hero-main-contain">
                 <div class="our-purpose">
-                    <p class="text-4xl text-gray-400 mb-5">AI for Hotels & Restaurants</p>
-                    <p class="main-title text-blue-900 poppins-regular text-black-600">Cut <span class="dynamic-text">time&nbsp;</span>& CO2 fast.<br>No spreadsheet needed.</p>
+                    <p class="text-4xl text-gray-400">AI for Hotels & Restaurants</p>
+                    <p class="main-title text-blue-900 poppins-regular text-black-600">Cut <span class="dynamic-text">time</span>& CO2 fast.<br>No spreadsheet needed.</p>
                 </div>
 
                 <!-- The textarea goes here -->
                 <section class="prompt-composer mx-auto max-w-400!" aria-label="Prompt composer">
                     <div class="prompt-composer__surface">
                         <div class="prompt-composer__suggestion" aria-live="polite">
+                            <div class="prompt-composer__star" aria-hidden="true">
+                                <svg viewBox="0 0 26 26">
+                                    <path d="M19.667 10.806c1.084-.154 1.87-.268 2.357-.341.486-.073.82-.109 1.002-.109.794 0 1.433.26 1.916.78.482.492.724 1.15.724 1.972 0 .822-.242 1.496-.724 2.023-.483.492-1.122.738-1.916.738-.265 0-.676-.036-1.233-.109-.53-.073-1.463-.228-2.799-.464l-3.69-.637 2.602 3.036c1.042 1.213 1.695 2.05 1.96 2.51.266.459.398.898.398 1.318 0 .822-.232 1.479-.695 1.972-.483.52-1.094.78-1.833.78-.794 0-1.405-.279-1.833-.837-.427-.557-.99-1.792-1.688-3.705l-1.676-4.496-1.676 4.496c-.698 1.913-1.26 3.148-1.688 3.705-.428.558-1.039.837-1.833.837-.739 0-1.35-.26-1.832-.78-.464-.493-.695-1.15-.695-1.972 0-.42.133-.859.398-1.318.266-.46.918-1.297 1.96-2.51l2.603-3.036-3.69.637c-1.336.237-2.269.392-2.799.464-.557.073-.968.109-1.233.109-.794 0-1.433-.246-1.916-.738-.482-.527-.723-1.201-.723-2.023 0-.822.241-1.48.723-1.972.483-.52 1.122-.78 1.916-.78.182 0 .516.036 1.002.109.486.073 1.273.187 2.357.341l3.69.637-2.603-3.036c-1.042-1.213-1.695-2.05-1.96-2.51-.266-.46-.398-.899-.398-1.318 0-.822.231-1.48.695-1.973.482-.52 1.093-.779 1.832-.779.794 0 1.405.278 1.833.836.428.558.99 1.793 1.688 3.706l1.676 4.496 1.676-4.496c.698-1.913 1.261-3.148 1.688-3.706.428-.558 1.039-.836 1.833-.836.739 0 1.35.26 1.833.779.463.493.695 1.151.695 1.973 0 .419-.133.858-.398 1.318-.265.46-.918 1.297-1.96 2.51l-2.603 3.036 3.69-.637z"/>
+                                </svg>
+                            </div>
                             <div class="prompt-composer__sentence leading-[3]!">
                                 <span>As a </span>
                                 <div class="prompt-token" data-token="verb">
@@ -118,13 +117,13 @@
                         <textarea id="prompt-composer-textarea" class="prompt-composer__textarea" spellcheck="false" hidden></textarea>
                         </label>
                         <div class="prompt-composer__footer">
-                            <button data-tippy-content="Shuffle your demand" type="button" class="prompt-composer__action prompt-composer__action--secondary" data-action="shuffle" aria-label="Shuffle suggestions">
+                            <button type="button" class="prompt-composer__action prompt-composer__action--secondary" data-action="shuffle" aria-label="Shuffle suggestions">
                                 <svg width="800px" height="800px" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <path class="clr-i-outline clr-i-outline-path-1" d="M34.1,4,31.71,1.6a1.83,1.83,0,0,0-1.31-.54h0a2.05,2.05,0,0,0-1.45.62L1.76,29.23A2,2,0,0,0,1.68,32l2.4,2.43A1.83,1.83,0,0,0,5.39,35h0a2.05,2.05,0,0,0,1.45-.62L34,6.79A2,2,0,0,0,34.1,4ZM5.42,32.93,3.16,30.65h0L24.11,9.43l2.25,2.28ZM32.61,5.39l-5.12,5.18L25.24,8.29l5.13-5.2,2.25,2.28Z"></path><path class="clr-i-outline clr-i-outline-path-2" d="M32.53,20.47l2.09-2.09a.8.8,0,0,0-1.13-1.13l-2.09,2.09-2.09-2.09a.8.8,0,0,0-1.13,1.13l2.09,2.09-2.09,2.09a.8.8,0,0,0,1.13,1.13l2.09-2.09,2.09,2.09a.8.8,0,0,0,1.13-1.13Z"></path><path class="clr-i-outline clr-i-outline-path-3" d="M14.78,6.51a.8.8,0,0,0,1.13,0L17.4,5l1.49,1.49A.8.8,0,0,0,20,5.38L18.54,3.89,20,2.4a.8.8,0,0,0-1.13-1.13L17.4,2.76,15.91,1.27A.8.8,0,1,0,14.78,2.4l1.49,1.49L14.78,5.38A.8.8,0,0,0,14.78,6.51Z"></path><path class="clr-i-outline clr-i-outline-path-4" d="M8.33,15.26a.8.8,0,0,0,1.13,0l1.16-1.16,1.16,1.16a.8.8,0,1,0,1.13-1.13L11.76,13l1.16-1.16a.8.8,0,1,0-1.13-1.13l-1.16,1.16L9.46,10.68a.8.8,0,1,0-1.13,1.13L9.49,13,8.33,14.13A.8.8,0,0,0,8.33,15.26Z"></path>
                                     <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
                                 </svg>
                             </button>
-                            <button data-tippy-content="Reach us immediately" type="button" class="prompt-composer__action prompt-composer__action--primary" data-action="open" aria-label="Ask for demo">
+                            <button type="button" class="prompt-composer__action prompt-composer__action--primary" data-action="open" aria-label="Ask for demo">
                                 <svg viewBox="0 0 20 20" aria-hidden="true">
                                     <path d="M11 3h6a1 1 0 0 1 1 1v6h-2V5.414l-9.293 9.293-1.414-1.414L14.586 4H11V2Z"/>
                                     <path d="M5 5h4v2H6v8h8v-3h2v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/>
@@ -142,8 +141,8 @@
 
             <div class="motion-animation">
                 <div class="motion-animation-video" role="region" aria-label="Video player">
-                    <!-- <video preload="metadata" poster="https://image.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc/thumbnail.webp?width=1920&fit_mode=preserve&time=0" class="w-full h-full object-fill" src="/assets/videos/87789-602074264.mp4" autoplay loop muted></video> -->
-                    <video preload="metadata" poster="https://image.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc/thumbnail.webp?width=1920&fit_mode=preserve&time=0" class="w-full h-full object-fill" src="https://stream.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc.m3u8" autoplay loop muted></video>
+                    <video preload="metadata" poster="https://image.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc/thumbnail.webp?width=1920&fit_mode=preserve&time=0" class="w-full h-full object-fill" src="/assets/videos/87789-602074264.mp4" autoplay loop muted></video>
+                    <!-- <video preload="metadata" poster="https://image.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc/thumbnail.webp?width=1920&fit_mode=preserve&time=0" class="w-full h-full object-fill" src="https://stream.mux.com/Ta9bafwPOz7Mcyhvv02yYzVcBYRWhjs52goozt9sXMKc.m3u8" autoplay loop muted></video> -->
                 </div>
             </div>
         </div>
@@ -157,7 +156,128 @@
                 <img class="sm:max-w-60" data-stretch="false" data-src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png" data-image="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png" data-image-dimensions="327x96" data-image-focal-point="0.5,0.5" alt="Logo of Opéra Liège with a stylized black and white geometric design." data-load="false" elementtiming="system-image-block" data-sqsp-image-block-image="" src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png" width="327" height="96" sizes="(max-width: 640px) 100vw, (max-width: 767px) 37.5vw, 12.5vw" srcset="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/1550104a-e25b-4b51-934f-ce8ad18868dc/operaLiege.png?format=2500w 2500w" loading="lazy" decoding="async" data-loader="sqs">
             </div>
 
+            <div class="py-15 container-width">
+                <div class="our-identity--item sm:flex sm:text-right sm:justify-end">
+                    <div class="sm:max-w-[80%]!">
+                        <p class="label">Eqolux is for <span class="">Finance</span></p>
+                        <p class="subtitle">Get rid of manual work.</p>
+                        <p class="subtitle">We are integrated to all your financial & accountability tools.</p>
+                        <img class="media max-w-full!" data-stretch="false" data-src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png" data-image="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png" data-image-dimensions="1920x1080" data-image-focal-point="0.12683972039762548,0.8160510031876993" alt="Chart showing various invoice and financial documents connected to a central e-invoicing system with logos of Sage, Oracle, SAP, Infor, Yooz, and Pennylane." data-load="false" elementtiming="system-image-block" data-sqsp-image-block-image="" src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png" width="1920" height="1080" sizes="(max-width: 640px) 100vw, (max-width: 767px) 100vw, 66.66666666666666vw" srcset="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/45cab84d-54a2-4599-b6ca-ef49ef44df2c/Pitch+Deck+7%27+EQO.png?format=2500w 2500w" loading="lazy" decoding="async" data-loader="sqs">
+                    </div>
+                </div>
+                <div class="our-identity--item sm:flex sm:text-left sm:justify-start">
+                    <div class="sm:max-w-[80%]!">
+                        <p class="label">Eqolux is for <span class="">Sustainability</span></p>
+                        <p class="subtitle">No need for extra work to get your Carbon footprint impact.</p>
+                        <p class="subtitle">We are extracting & calculating CO2 scores automatically.</p>
+                        <img class="media max-w-full!" data-stretch="false" data-src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png" data-image="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png" data-image-dimensions="4320x3072" data-image-focal-point="0.5,0.5" alt="A digital dashboard interface displaying supply chain sustainability metrics for Audrey, with statistics on suppliers, products, and carbon footprint, including a world map highlighting different regions." data-load="false" elementtiming="system-image-block" data-sqsp-image-block-image="" src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png" width="4320" height="3072" sizes="(max-width: 640px) 100vw, (max-width: 767px) 100vw, 41.66666666666667vw" srcset="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4734ecd9-9525-47e3-a36f-9b33fbab7226/Dashboard+CO2.png?format=2500w 2500w" loading="lazy" decoding="async" data-loader="sqs">
+                    </div>
+                </div>
+                <div class="our-identity--item sm:flex sm:text-right sm:justify-end">
+                    <div class="sm:max-w-[80%]!">
+                        <p class="label">Eqolux is for <span class="">F&B Managers</span></p>
+                        <p class="subtitle">No need for extra work to get your Carbon footprint impact.</p>
+                        <p class="subtitle">We are extracting & calculating CO2 scores automatically.</p>
+                        <img class="media max-w-full!" data-stretch="false" data-src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png" data-image="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png" data-image-dimensions="1677x1296" data-image-focal-point="0.5,0.5" alt="An online kitchen management software displaying the creation of a dish called 'Suprême de Volaille aux Artichauts' with a list of ingredients, their origin, price, CO2 emissions, quantity, and recipe settings, including cost and carbon footprint metrics." data-load="false" elementtiming="system-image-block" data-sqsp-image-block-image="" src="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png" width="1677" height="1296" sizes="(max-width: 640px) 100vw, (max-width: 767px) 100vw, 62.5vw" srcset="https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png?format=100w 100w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png?format=300w 300w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png?format=500w 500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png?format=750w 750w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png?format=1000w 1000w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png?format=1500w 1500w, https://images.squarespace-cdn.com/content/v1/64649ccf91ebe45f7e1ef885/4751029e-c179-434f-8592-0c3a3a2fd352/Menu+engineering.png?format=2500w 2500w" loading="lazy" decoding="async" data-loader="sqs">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Over here! -->
+            <section class="testimonials container-width hidden" aria-label="Customer testimonials">
+                <header class="testimonials__header">
+                    <h2 class="testimonials__title">Eqolux is for you.</h2>
+                    <p class="testimonials__subtitle">And they all say it out loud.</p>
+                </header>
+
+                    <div class="testimonials__slider swiper" role="group" aria-label="Testimonials slider">
+                        <div class="testimonials__list swiper-wrapper" role="list">
+                            <article class="testimonial-card swiper-slide" role="listitem">
+                                <p class="testimonial-card__quote">
+                                    Dia is my eng tutor: it answers questions in-line and gives me practice problems to test myself.
+                                </p>
+                                <div class="testimonial-card__author">
+                                    <img class="testimonial-card__avatar" src="https://i.pravatar.cc/96?img=12" alt="Portrait of Quinn">
+                                    <div class="testimonial-card__meta">
+                                        <p class="testimonial-card__name">Quinn</p>
+                                        <p class="testimonial-card__role">Engineering Student</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="testimonial-card swiper-slide" role="listitem">
+                                <p class="testimonial-card__quote">
+                                    Dia helped me pick SaaS tools for my team, comparing options with context on what matters most for us.
+                                </p>
+                                <div class="testimonial-card__author">
+                                    <img class="testimonial-card__avatar" src="https://i.pravatar.cc/96?img=33" alt="Portrait of Mohamed">
+                                    <div class="testimonial-card__meta">
+                                        <p class="testimonial-card__name">Mohamed</p>
+                                        <p class="testimonial-card__role">Creative Designer</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="testimonial-card swiper-slide" role="listitem">
+                                <p class="testimonial-card__quote">
+                                    Dia cuts the busywork. With just a prompt and tabs, I find sources in minutes, not hours.
+                                </p>
+                                <div class="testimonial-card__author">
+                                    <img class="testimonial-card__avatar" src="https://i.pravatar.cc/96?img=5" alt="Portrait of Vita">
+                                    <div class="testimonial-card__meta">
+                                        <p class="testimonial-card__name">Vita</p>
+                                        <p class="testimonial-card__role">Student Journalist</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="testimonial-card swiper-slide" role="listitem">
+                                <p class="testimonial-card__quote">
+                                    Personalization in Dia is a secret weapon to stay pitch perfect across all our client brands.
+                                </p>
+                                <div class="testimonial-card__author">
+                                    <img class="testimonial-card__avatar" src="https://i.pravatar.cc/96?img=47" alt="Portrait of Kimberly">
+                                    <div class="testimonial-card__meta">
+                                        <p class="testimonial-card__name">Kimberly</p>
+                                        <p class="testimonial-card__role">Agency Director</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="testimonial-card swiper-slide" role="listitem">
+                                <p class="testimonial-card__quote">
+                                    I make new apps almost weekly. There&#39;s a ton of context to reuse, and Dia helps me solve problems fast.
+                                </p>
+                                <div class="testimonial-card__author">
+                                    <img class="testimonial-card__avatar" src="https://i.pravatar.cc/96?img=68" alt="Portrait of Los">
+                                    <div class="testimonial-card__meta">
+                                        <p class="testimonial-card__name">Los</p>
+                                        <p class="testimonial-card__role">Product Engineer</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!-- <div class="testimonials__pagination swiper-pagination" aria-hidden="true"></div> -->
+                        <!-- <div class="testimonials__controls">
+                            <button type="button" class="testimonials__nav testimonials__nav--prev" aria-label="Previous testimonial">
+                                <span aria-hidden="true">&lt;</span>
+                            </button>
+                            <button type="button" class="testimonials__nav testimonials__nav--next" aria-label="Next testimonial">
+                                <span aria-hidden="true">&gt;</span>
+                            </button>
+                        </div> -->
+                    </div>
+
+                <div class="testimonials__cta">
+                    <h3 class="testimonials__cta-title">Eqolux.</h3>
+                    <p class="testimonials__cta-copy">Let&#39;s make you smarter, richer &amp; sustainable.</p>
+                    <button type="button" class="ask-demo text-white rounded-lg text-3xl! px-10 py-5 text-center animation-button hover:cursor-pointer">
+                        Create an account
+                    </button>
+                </div>
+            </section>
         </div>
+        <!-- <footer class="footer-block text-center">Copyrights @eqolux 2025</footer> -->
         <div class="drawer-block">
             <div class="drawer-content">
                 <div class="p-20 flex justify-center">
@@ -169,13 +289,7 @@
                 </div>
                 <ul class="drawer-menu">
                     <li>
-                        <a href="#" class="text-7xl animation-link" data-content="Ai Products"><span data-content="Ai Products" aria-hidden="true"></span>Ai Products</a>
-                    </li>
-                    <li>
-                        <a href="#" class="text-7xl animation-link" data-content="Changelogs"><span data-content="Changelogs" aria-hidden="true"></span>Changelogs</a>
-                    </li>
-                    <li>
-                        <a href="https://app.eqolux.com/login" class="text-7xl animation-link" data-content="Login"><span data-content="Login" aria-hidden="true"></span>Login</a>
+                        <a href="#" class="text-7xl animation-link" data-content="Login"><span data-content="Login" aria-hidden="true"></span>Login</a>
                     </li>
                     <li>
                         <button type="button" class="ask-demo text-white rounded-lg text-4xl! px-10 py-5 text-center animation-button hover:cursor-pointer">Ask For Demo</button>
@@ -184,10 +298,9 @@
             </div>
         </div>
     </main>
+    <!-- <footer class="footer-block text-center">Copyrights @eqolux 2025</footer> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-    <script src="https://unpkg.com/popper.js@1"></script>
-    <script src="https://unpkg.com/tippy.js@5"></script>
     <script src="/scripts/index.js"></script>
 </body>
 </html>
