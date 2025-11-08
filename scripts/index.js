@@ -411,6 +411,13 @@ const addAnimationOnView = (entry) => {
     label.classList.add('chroma-text', 'chroma-text-animate');
 };
 
+const addAnimationOnSponsors = (entry) => {
+    if (!entry.classList.contains('slide-from-bottom')) {
+        entry.classList.add('slide-from-bottom');
+        entry.classList.remove('hidden');
+    }
+}
+
 const initTestimonialsSlider = () => {
     const sliderEl = document.querySelector('.testimonials__slider');
 
@@ -512,6 +519,10 @@ const main = () => {
             if (entry.isVisible && entry.target.classList.contains('our-identity--item')) {
                 addAnimationOnView(entry.target);
             }
+
+            if (entry.isVisible && entry.target.classList.contains('sponsors')) {
+                addAnimationOnSponsors(entry.target);
+            }
         }
     };
 
@@ -521,6 +532,7 @@ const main = () => {
         updateDynamicText();
         observer.observe(document.querySelector(".invoices-count"));
         observer.observe(document.querySelector(".mobile-menu"));
+        observer.observe(document.querySelector(".sponsors"));
         document.querySelectorAll(".our-identity--item").forEach(selector => {
             observer.observe(selector);
         })
