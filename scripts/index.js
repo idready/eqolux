@@ -412,9 +412,8 @@ const addAnimationOnView = (entry) => {
 };
 
 const addAnimationOnSponsors = (entry) => {
-    if (!entry.classList.contains('slide-from-bottom')) {
-        entry.classList.add('slide-from-bottom');
-        entry.classList.remove('hidden');
+    if (!entry.classList.contains('appears-from-bottom')) {
+        entry.classList.add('appears-from-bottom');
     }
 }
 

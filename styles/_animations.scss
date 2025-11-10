@@ -136,6 +136,15 @@ $animations-directions: slide-from-top, slide-from-bottom, slide-from-left, slid
   }
 }
 
+$appearence-animations-directions: appears-from-bottom;
+
+@each $animation-direction in $appearence-animations-directions {
+  .#{$animation-direction} {
+    animation: #{$animation-direction} 0.4s ease-in-out 0.2s forwards;
+  }
+}
+
+
 @keyframes chroma-sweep {
     0% {
         background-position: 100% 0;
@@ -193,5 +202,18 @@ $animations-directions: slide-from-top, slide-from-bottom, slide-from-left, slid
 
     to {
         transform: translateY(0);
+    }
+}
+
+
+@keyframes appears-from-bottom {
+    from {
+        transform: translateY(40%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }

@@ -94,6 +94,10 @@
   animation: slide-from-right 0.8s ease-in-out 0.3s forwards;
 }
 
+.appears-from-bottom {
+  animation: appears-from-bottom 0.4s ease-in-out 0.2s forwards;
+}
+
 @keyframes chroma-sweep {
   0% {
     background-position: 100% 0;
@@ -141,6 +145,16 @@
   }
   to {
     transform: translateY(0);
+  }
+}
+@keyframes appears-from-bottom {
+  from {
+    transform: translateY(40%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 .scroll-down-container {
@@ -806,6 +820,7 @@
 }
 .sponsors {
   margin-bottom: 5rem;
+  opacity: 0;
 }
 .sponsors .sponsor-image {
   display: flex;

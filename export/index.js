@@ -368,10 +368,8 @@ const updateDynamicText = () => {
 const initVideoBackgrounds = () => {
     const videoContainers = document.querySelectorAll('.motion-animation-video');
     const videosFiles =  [
-        // '/assets/videos/85590-590014592.mp4',
-        // '/assets/videos/87789-602074264.mp4',
-        // '/assets/videos/104629-667563131.mp4',
-        // '/assets/videos/131974-751915250.mp4',
+        '/assets/videos/85590-590014592.mp4',
+        '/assets/videos/87789-602074264.mp4',
         '/assets/videos/87787-602074236.mp4'
     ]
     videoContainers.forEach((container) => {
@@ -412,9 +410,8 @@ const addAnimationOnView = (entry) => {
 };
 
 const addAnimationOnSponsors = (entry) => {
-    if (!entry.classList.contains('slide-from-bottom')) {
-        entry.classList.add('slide-from-bottom');
-        entry.classList.remove('hidden');
+    if (!entry.classList.contains('appears-from-bottom')) {
+        entry.classList.add('appears-from-bottom');
     }
 }
 
@@ -520,7 +517,7 @@ const main = () => {
                 addAnimationOnView(entry.target);
             }
 
-            if (entry.isVisible && entry.target.classList.contains('sponsors')) {
+            if (entry.isIntersecting && entry.target.classList.contains('sponsors') && !entry.target.classList.contains('appears-from-bottom')) {
                 addAnimationOnSponsors(entry.target);
             }
         }
